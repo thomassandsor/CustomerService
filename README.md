@@ -19,3 +19,6 @@ Field: Signature "cs_signature"
 
 Signature (NEW)
 Entity "cs_Signature"
+
+Customer Service Hub APP
+I add forms to app. Email and Case
