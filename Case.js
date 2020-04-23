@@ -17,7 +17,6 @@ function OnCrmPageLoad(executionContext) {
         BulkEdit: 6
     }
     runAlways(formContext);
-    alert(formContext.ui.getFormType());
     switch (formContext.ui.getFormType()) {
         case FormTypes.Create: OnNewFormLoad(); break;
         case FormTypes.Update: OnUpdateFormLoad(); break;
