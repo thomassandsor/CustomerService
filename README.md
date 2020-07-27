@@ -64,8 +64,11 @@ User - CS <- Main Form
 Signature "cs_signature" - lookup storing the signature
 Field: Signature "cs_signature"
 
-## Workflow
-Email - New email received on case <- Notify user when a new email has arrived + update the case with the latest activity received date.
+## Process
+Email - New email received on case <- Notify user when a new email has arrived + update the case with the latest activity received date. *example WF for use if you want to*
+
+## Record Creation and Update Rules
+Email 2 Case - Will import as inactive and you have to update with correct parameters to make it work *Need to update owner of new cases*
 
 ## Customer Service Hub APP
 I add forms to app. Email and Case
