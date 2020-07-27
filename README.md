@@ -17,7 +17,7 @@ Relationship:
 N:1 relationship updated to configurable cascading, and Assign set to "Cascade None". Default behaviour is Parental. This had to be done, because the assigning of case will mess with the date stamps on case activities. 
 
 ## Case:
-# Form:
+### Form:
 Case Main - CS <- Main form for case
 
 View:
