@@ -1,5 +1,5 @@
-# CustomerService
-Making Customer Service simple
+# Simplifying Customer Service
+Welcome to my community solution. This is a part of a blog series you can find on my blog https://crmkeeper.com/dynamics-365-customer-service/ 
 
 ![Bilde](./IMAGES/Process.jpg)
 
