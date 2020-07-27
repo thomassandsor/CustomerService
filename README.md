@@ -16,29 +16,31 @@ I would prefer to download the solution as unmanaged. I only add things that you
 The following is a list of what is included in the Solution file. 
 
 ## Account
-### Form:
+### Form
 Account Main - CS <- Main form for account. 
 Recent Cases - CS <- Quick View Form for Cases
 
 ## Appointment, Email, Note, Phone Call and Task
-### Relationship:
+### Relationship
 N:1 relationship updated to configurable cascading, and Assign set to "Cascade None". Default behaviour is Parental. This had to be done, because the assigning of case will mess with the date stamps on case activities. 
 
 ## Case
-### Form:
-Case Main - CS <- Main form for case
+### Form
+Case Main - CS <- Main form for Case
+### JavaScript
+cs_case <- Script for Case
 
-### View:
+### View
 Active Cases - CS <- Main view for all cases
 Active Cases Team - CS <- All cases assigned to the team
 My Active Cases - CS <- The cases assigned to you
 
-### Field:
+### Field
 Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
 Last Activity Date "cs_lastactivitydate" - Updates whenever a new email is received. Feel free to use field for Tasks or other avtivities as needed. 
 
 ## Contact
-### Form:
+### Form
 Contact Main - CS <- Main form Contact
 Contact Simple Form - CS <- Quick edit on Case
 Recent Cases - CS <- Quick View form for Case
@@ -47,18 +49,23 @@ Recent Cases - CS <- Quick View form for Case
 ### Form
 Email - CS <- Main form Email
 ### JavaScript
-Javascript file CS_Email
+cs_email <- Script for Email
 ### Field
 Signature Added "cs_signatureadded" - Added because email does a strange close&update before actually sending the email. This is just to store that javascript has added signature
 
-## Workflow
-Email - Update Case Last Email
+## Signature (Custom Entity cs_signature)
+### Field
+HTML Signature "cs_htmlsignature" - Where we store the signature in HTML for the user
 
 ## User
+### Form
+User - CS <- Main Form
+### Field
+Signature "cs_signature" - lookup storing the signature
 Field: Signature "cs_signature"
 
-## Signature (NEW)
-Entity "cs_Signature"
+## Workflow
+Email - New email received on case <- Notify user when a new email has arrived + update the case with the latest activity received date.
 
 ## Customer Service Hub APP
 I add forms to app. Email and Case
