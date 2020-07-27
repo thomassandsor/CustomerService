@@ -2,7 +2,9 @@
 Welcome to my community solution for simplifying the Customer Service. </br>
 This is a part of a blog series you can find on my blog https://crmkeeper.com/dynamics-365-customer-service/ 
 
-![Bilde](./IMAGES/thomas_min.jpg)
+<p align="center">
+  ![Bilde](./IMAGES/thomas_min.jpg)
+</p>
 
 ## Scenario
 ![Bilde](./IMAGES/Process.jpg)
