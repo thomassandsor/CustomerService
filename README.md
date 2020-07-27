@@ -21,46 +21,46 @@ Account Main - CS <- Main form for account.
 Recent Cases - CS <- Quick View Form for Cases
 
 ## Appointment, Email, Note, Phone Call and Task
-### Relationship
+##### Relationship
 N:1 relationship updated to configurable cascading, and Assign set to "Cascade None". Default behaviour is Parental. This had to be done, because the assigning of case will mess with the date stamps on case activities. 
 
 ## Case
-### Form
+##### Form
 Case Main - CS <- Main form for Case
-### JavaScript
+##### JavaScript
 cs_case <- Script for Case
 
-### View
+##### View
 Active Cases - CS <- Main view for all cases
 Active Cases Team - CS <- All cases assigned to the team
 My Active Cases - CS <- The cases assigned to you
 
-### Field
+##### Field
 Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
 Last Activity Date "cs_lastactivitydate" - Updates whenever a new email is received. Feel free to use field for Tasks or other avtivities as needed. 
 
 ## Contact
-### Form
+##### Form
 Contact Main - CS <- Main form Contact
 Contact Simple Form - CS <- Quick edit on Case
 Recent Cases - CS <- Quick View form for Case
 
 ## Email
-### Form
+##### Form
 Email - CS <- Main form Email
-### JavaScript
+##### JavaScript
 cs_email <- Script for Email
-### Field
+##### Field
 Signature Added "cs_signatureadded" - Added because email does a strange close&update before actually sending the email. This is just to store that javascript has added signature
 
 ## Signature (Custom Entity cs_signature)
-### Field
+##### Field
 HTML Signature "cs_htmlsignature" - Where we store the signature in HTML for the user
 
 ## User
-### Form
+##### Form
 User - CS <- Main Form
-### Field
+##### Field
 Signature "cs_signature" - lookup storing the signature
 Field: Signature "cs_signature"
 
