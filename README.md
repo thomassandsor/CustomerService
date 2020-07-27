@@ -3,7 +3,7 @@ Making Customer Service simple
 
 Download the simple solution as unmanaged. I only att things that you easily can remove afterwords. Every form I create is custom, and should not overwrite anything you have from before. This is why I am sayin it should be safe to import as unmanaged solution. I am not an ISV, so therefore the configuration is not to be considered as an ISV solution either. 
 
-![Bilde](./IMAGES/thomas.jpg)
+![Bilde](./IMAGES/thomas_min.jpg)
 
 The following is a list of what is included in the Solution file. 
 
