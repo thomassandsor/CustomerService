@@ -15,7 +15,7 @@ I would prefer to download the solution as unmanaged. I only add things that you
 
 The following is a list of what is included in the Solution file. 
 
-## Account:
+## Account
 ### Form:
 Account Main - CS <- Main form for account. 
 Recent Cases - CS <- Quick View Form for Cases
@@ -24,7 +24,7 @@ Recent Cases - CS <- Quick View Form for Cases
 ### Relationship:
 N:1 relationship updated to configurable cascading, and Assign set to "Cascade None". Default behaviour is Parental. This had to be done, because the assigning of case will mess with the date stamps on case activities. 
 
-## Case:
+## Case
 ### Form:
 Case Main - CS <- Main form for case
 
@@ -34,16 +34,27 @@ Active Cases Team - CS <- All cases assigned to the team
 My Active Cases - CS <- The cases assigned to you
 
 ### Field:
-Field: Case Number (ticketnumber) - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
-Field: Last Activity Date "cs_lastactivitydate" - Updates whenever a new email is received. Feel free to use field for Tasks or other avtivities as needed. 
+Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
+Last Activity Date "cs_lastactivitydate" - Updates whenever a new email is received. Feel free to use field for Tasks or other avtivities as needed. 
 
-## Email:
+## Contact
+### Form:
+Contact Main - CS <- Main form Contact
+Contact Simple Form - CS <- Quick edit on Case
+Recent Cases - CS <- Quick View form for Case
+
+## Email
+### Form
+Email - CS <- Main form Email
+### JavaScript
 Javascript file CS_Email
+### Field
+Signature Added "cs_signatureadded" - Added because email does a strange close&update before actually sending the email. This is just to store that javascript has added signature
 
-## Workflow:
+## Workflow
 Email - Update Case Last Email
 
-## User:
+## User
 Field: Signature "cs_signature"
 
 ## Signature (NEW)
@@ -54,5 +65,4 @@ I add forms to app. Email and Case
 
 
 
-## Contact: 
-Quick view Recent Cases
+
