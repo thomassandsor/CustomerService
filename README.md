@@ -31,17 +31,19 @@ Case Main - CS <- Main form for Case
 cs_case <- Script for Case
 
 ##### View
-Active Cases - CS <- Main view for all cases  Active Cases Team - CS <- All cases assigned to the team  My Active Cases - CS <- The cases assigned to you
+Active Cases - CS <- Main view for all cases</br>
+Active Cases Team - CS <- All cases assigned to the team</br>
+My Active Cases - CS <- The cases assigned to you</br>
 
 ##### Field
-Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
+Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert</br>
 Last Activity Date "cs_lastactivitydate" - Updates whenever a new email is received. Feel free to use field for Tasks or other avtivities as needed. 
 
 ## Contact
 ##### Form
-Contact Main - CS <- Main form Contact
-Contact Simple Form - CS <- Quick edit on Case
-Recent Cases - CS <- Quick View form for Case
+Contact Main - CS <- Main form Contact</br>
+Contact Simple Form - CS <- Quick edit on Case</br>
+Recent Cases - CS <- Quick View form for Case</br>
 
 ## Email
 ##### Form
