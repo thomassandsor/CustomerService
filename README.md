@@ -31,9 +31,7 @@ Case Main - CS <- Main form for Case
 cs_case <- Script for Case
 
 ##### View
-Active Cases - CS <- Main view for all cases
-Active Cases Team - CS <- All cases assigned to the team
-My Active Cases - CS <- The cases assigned to you
+Active Cases - CS <- Main view for all cases  Active Cases Team - CS <- All cases assigned to the team  My Active Cases - CS <- The cases assigned to you
 
 ##### Field
 Case Number "ticketnumber" - I overwrite the autonumber. Default Value is CAS-{SEQNUM:5}-{RANDSTRING:6} if you wan to revert
