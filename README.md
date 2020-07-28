@@ -61,8 +61,7 @@ HTML Signature "cs_htmlsignature" - Where we store the signature in HTML for the
 ##### Form
 User - CS <- Main Form
 ##### Field
-Signature "cs_signature" - lookup storing the signature</br>
-Field: Signature "cs_signature"
+Signature "cs_signature" - lookup storing the signature
 
 ## Process
 Email - New email received on case <- Notify user when a new email has arrived + update the case with the latest activity received date. **example WF for use if you want to**
