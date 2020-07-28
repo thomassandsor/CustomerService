@@ -17,7 +17,7 @@ The following is a list of what is included in the Solution file.
 
 ## Account
 ##### Form
-Account Main - CS <- Main form for account. 
+Account Main - CS <- Main form for account</br>
 Recent Cases - CS <- Quick View Form for Cases
 
 ## Appointment, Email, Note, Phone Call and Task
@@ -61,7 +61,7 @@ HTML Signature "cs_htmlsignature" - Where we store the signature in HTML for the
 ##### Form
 User - CS <- Main Form
 ##### Field
-Signature "cs_signature" - lookup storing the signature
+Signature "cs_signature" - lookup storing the signature</br>
 Field: Signature "cs_signature"
 
 ## Process
