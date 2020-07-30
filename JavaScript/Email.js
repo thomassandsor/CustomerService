@@ -2,7 +2,7 @@ var formContext = "";
 
 function OnCrmPageLoad(executionContext) {
     formContext = executionContext.getFormContext();
-    
+
     //
     //You don't need to change this. Just understand that forms have one the following states when opening
     //
@@ -35,16 +35,19 @@ function OnCrmPageLoad(executionContext) {
 //
 function runAlways() { }
 function OnNewFormLoad() {
-
     //On new form load we call get Signature and Queue
     //
     //For regarding we have to check that it contains ID before getting data, and we have to check that it is case
     //
     var RegardingObject = formContext.getAttribute("regardingobjectid").getValue();
+    //Check for Signature added
+    var SignatureYesNo = formContext.getAttribute("cs_signatureadded");
     if (RegardingObject != null) {
         if (RegardingObject[0].entityType == "incident") {
-            GetCaseIDSetSubject();
-            GetDefaultQueueAndSignature();
+            if (SignatureYesNo == null || SignatureYesNo.getValue() == false) {
+                GetCaseIDSetSubjectSetContact();
+                GetDefaultQueueAndSignature();
+            }
         }
     }
 }
@@ -55,10 +58,14 @@ function OnUpdateFormLoad() {
     //For regarding we have to check that it contains ID before getting data, and we have to check that it is case
     //
     var RegardingObject = formContext.getAttribute("regardingobjectid").getValue();
+    //Check for Signature added
+    var SignatureYesNo = formContext.getAttribute("cs_signatureadded");
     if (RegardingObject != null) {
         if (RegardingObject[0].entityType == "incident") {
-            GetCaseIDSetSubject();
-            GetDefaultQueueAndSignature();
+            if (SignatureYesNo == null || SignatureYesNo.getValue() == false) {
+                GetCaseIDSetSubjectSetContact();
+                GetDefaultQueueAndSignature();
+            }
         }
     }
 }
@@ -76,9 +83,6 @@ function GetDefaultQueueAndSignature() {
     var UserID = Xrm.Utility.getGlobalContext().userSettings.userId;
     UserID = UserID.replace("{", "");
     UserID = UserID.replace("}", "");
-    //Check for Signature added
-    var SignatureYesNo = formContext.getAttribute("cs_signatureadded");
-    if (SignatureYesNo == null || SignatureYesNo.getValue() == false) {
 
         //Get User Default Queue and Signature via WebApi
         Xrm.WebApi.online.retrieveRecord("systemuser", UserID, "?$select=_queueid_value&$expand=cs_Signature($select=cs_htmlsignature)").then(
@@ -102,10 +106,10 @@ function GetDefaultQueueAndSignature() {
                 //Set Signature
                 if (Body != null) {
                     formContext.getAttribute("description").setValue("<br /><br />" + Signature + Body);
-                    SignatureYesNo.setValue(true);
+                    formContext.getAttribute("cs_signatureadded").setValue(true);
                 } else {
                     formContext.getAttribute("description").setValue("<br /><br />" + Signature);
-                    SignatureYesNo.setValue(true);
+                    formContext.getAttribute("cs_signatureadded").setValue(true);
                 }
 
             },
@@ -113,22 +117,41 @@ function GetDefaultQueueAndSignature() {
                 Xrm.Utility.alertDialog(error.message);
             }
         );
-    }
 }
 
-function GetCaseIDSetSubject() {
+function GetCaseIDSetSubjectSetContact() {
     //Get Uswer GUID and replace "{" and "}" with blanks. 
     var CaseID = formContext.getAttribute("regardingobjectid").getValue()[0].id;
     CaseID = CaseID.replace("{", "");
     CaseID = CaseID.replace("}", "");
+    var EmailTOType = formContext.getAttribute("to").getValue()[0].entityType;
+    var CaseNumber;
+    var CaseContactGUID;
+    var CaseContactName;
+    var CaseContactType;
+    var Subject;
+    var Title;
 
-    Xrm.WebApi.online.retrieveRecord("incident", CaseID, "?$select=ticketnumber").then(
+    Xrm.WebApi.online.retrieveRecord("incident", CaseID, "?$select=_primarycontactid_value,ticketnumber,title").then(
         function success(result) {
-            var CaseNumber = result["ticketnumber"];
-            var Subject = formContext.getAttribute("subject");
+            CaseNumber = result["ticketnumber"];
+            Title = result["title"];
+            CaseContactGUID = result["_primarycontactid_value"];
+            CaseContactName = result["_primarycontactid_value@OData.Community.Display.V1.FormattedValue"];
+            CaseContactType = result["_primarycontactid_value@Microsoft.Dynamics.CRM.lookuplogicalname"];
+
             //
-            //Check if Subject contains data
+            //Check if TO field is Type ACCOUNT. We need to set it to contact
             //
+            if (EmailTOType == "account") {
+                //Change from the Account to Contact, so the email can send. 
+                formContext.getAttribute("to").setValue([{ id: CaseContactGUID, name: CaseContactName, entityType: CaseContactType }]);
+            }
+
+            //
+            //Check if Subject contains case number. If not, add case number.
+            //
+            Subject = formContext.getAttribute("subject");
             if (Subject.getValue() != null) {
                 var SubjectContainsID = Subject.getValue().includes(CaseNumber);
                 //
@@ -137,17 +160,13 @@ function GetCaseIDSetSubject() {
                 if (SubjectContainsID == false) {
                     formContext.getAttribute("subject").setValue(Subject.getValue() + " - " + CaseNumber);
                 }
-            } 
-            //
-            //This is a new email without a subject. Get the CaseNumber, and inform that topic has to be set
-            //
-            else {
-                formContext.getAttribute("subject").setValue("[Insert Topic] - " + CaseNumber);
+            } else {
+                //IF email is new. give it a default subject
+                formContext.getAttribute("subject").setValue(Title + " - " + CaseNumber);
             }
         },
         function (error) {
             Xrm.Utility.alertDialog(error.message);
         }
     );
-
 }
