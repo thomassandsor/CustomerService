@@ -11,7 +11,9 @@ This is a part of a blog series you can find on my blog https://crmkeeper.com/dy
 
 Before you start downloading the solution, you should head on over to my blog post where I explain how to implement everything. </br>
 https://crmkeeper.com/dynamics-365-customer-service/  </br>
-I would prefer to download the solution as unmanaged. I only add things that you easily can remove afterwords. Every form I create is custom, and should not overwrite anything you have from before. This is why I am sayin it should be safe to import as unmanaged solution. I am not an ISV, so therefore the configuration is not to be considered as an ISV solution either. 
+I would prefer to download the solution as unmanaged. I only add things that you easily can remove afterwords. Every form I create is custom, and should not overwrite anything you have from before. This is why I am sayin it should be safe to import as unmanaged solution. I am not an ISV, so therefore the configuration is not to be considered as an ISV solution either. </br>
+
+NB!! Language 1033 English has to be enabled.
 
 The following is a list of what is included in the Solution file. 
 
